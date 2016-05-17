@@ -39,41 +39,71 @@ public class Sudoku{
     }
 
     public boolean solveH(int row, int col){
-    	if(col >= puzzle.length){
-    		return true;
+    	if(row >= 8 && col >= 8){
+	    return true;
     	}
     	if(puzzle[row][col] != 0){
-    		if(col < 8){
-    			solveH(row,col+1);
-    		}else{
-    			solveH(row+1,col);
-    		}
+	    if(col < 7){
+		solveH(row,col+1);
+	    }else{
+		solveH(row+1,0);
+	    }
     	}else{
-    		temp = ( int ) (Math.random(10) + 1);
+	    temp = 1;
+	    if(checkBox(row,col,temp) && checkHorizontal(row,temp) 
+	       && checkVertical(col,temp)){
+		puzzle[row][col] = temp;
+		if(col < 8){
+		    solveH(row,col+1);
+		}else{
+		    solveH(row+1,col);
+		}
+	    } else {
+		temp++;
+	    }
+	}
+	return false;
+    }
 
-    	}
-    	if(checkBox(row,col) && checkHorizontal(row) && checkVertical()){
-    		if(col < 8){
-    			solveH(row,col+1);
-    		}else{
-    			solveH(row+1,col);
-    		}
-    	}
-
+    private int checkQuadrant(int row, int col){
+	if (row < 3 && col < 3)
+	    return 1;
+	if (row < 3 && col < 6)
+	    return 2;
+	if (row < 3 && col < 9)
+	    return 3;
+	if (row < 6 && col < 3)
+	    return 4;
+	if (row < 6 && col < 6)
+	    return 5;
+	if (row < 6 && col < 9)
+	    return 6;
+	if (row < 9 && col < 3)
+	    return 7;
+	if (row < 9 && col < 6)
+	    return 8;
+	if (row < 9 && col < 9)
+	    return 9;
     }
 
     public boolean checkBox(int row, int col, int v){
-
+	return false;
     }
 
     public boolean checkHorizontal(int row, int v){
     	for(int i = 0; i < 9; i++){
-    		if(puzzle[row][])
+	    if(puzzle[row][i] == v)
+		return false;
     	}
+	return true;
     }
 
-    public boolean checkVertical(int row, int v){
-
+    public boolean checkVertical(int col, int v){
+	for (int i = 0; i < 9; i++){
+	    if(puzzle[i][col] == v)
+		return false;
+    	}
+	return true;
     }
 
     public static void main(String[] args){
