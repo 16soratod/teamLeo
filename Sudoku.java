@@ -39,7 +39,7 @@ public class Sudoku{
     }
 
     public boolean solveH(int row, int col){
-    	if(row >= 8 && col >= 8){
+    	if(row >= 8 || col >= 8){
 	    	return true;
     	}
     	if(puzzle[row][col] != 0){
@@ -49,17 +49,25 @@ public class Sudoku{
 		solveH(row+1,0);
 	    }
     	}else{
-	    temp = 1;
-	    if(checkBox(row,col,temp) && checkHorizontal(row,temp) 
-	       && checkVertical(col,temp)){
-		puzzle[row][col] = temp;
-		if(col < 8){
-		    solveH(row,col+1);
-		}else{
-		    solveH(row+1,col);
+	    temp = 0;
+	    for(int i = 1; i < 10; i++){
+		temp = i;
+		if(checkBox(row,col,temp) && checkHorizontal(row,temp) 
+		   && checkVertical(col,temp)){
+		    puzzle[row][col] = temp;
+		    if(col < 7){
+			solveH(row,col+1);
+		    }else{
+			solveH(row+1,0);
+		    }
 		}
-	    } else {
-		temp++;
+	    }
+	    if(row == 0){
+		return false;
+	    }else if(col == 0){
+		solveH(row-1, 9);
+	    }else{
+		solveH(row, col-1);
 	    }
 	}
 	return false;
@@ -218,10 +226,10 @@ public class Sudoku{
     public static void main(String[] args){
 	Sudoku test = new Sudoku("puzzles.txt");
 	System.out.println(test.toString());
-	System.out.println(test.checkBox(0,1,9));
-	System.out.println(test.checkHorizontal(1,4));
-	System.out.println(test.checkVertical(3,7));
-	test.solve();
+	//System.out.println(test.checkBox(0,1,9));
+	//System.out.println(test.checkHorizontal(1,4));
+	//System.out.println(test.checkVertical(3,7));
+	System.out.println(test.solve());
 	System.out.println(test.toString());
     }
 }
