@@ -90,12 +90,20 @@ int getY(){
   
 void addOne(){
     int temp = puzzle[getY()][getX()];
-    puzzle[getY()][getX()] = temp++;
-    grid[getY()][getX()].num = temp;
+    if (temp == 9){
+      puzzle[getY()][getX()] = 0;
+      grid[getY()][getX()].num = 0;
+    } else {
+      puzzle[getY()][getX()] = temp+1;
+      grid[getY()][getX()].num = temp+1;
+    }
 } 
   
 void mousePressed(){
     addOne();
+    for (int i = 0; i < 9; i++)
+      println(Arrays.toString(puzzle[i]));
+    println();
   }
 
 void draw() {
@@ -110,10 +118,7 @@ void draw() {
         grid[i][j].rollover(mouseX,mouseY);
         grid[i][j].display();
         //grid[i][j].displayOver();
-        //mousePressed();
-        //grid[i][j].update();
       }
     }
   }
-  System.out.println(Arrays.toString(puzzle[0]));
 }

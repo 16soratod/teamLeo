@@ -16,8 +16,8 @@ class Cell {
   
   /*void addOne(){
     int temp = puzzle[getY()][getX()];
-    puzzle[getY()][getX()] = temp++;
-    grid[getY()][getX()].num = temp++;
+    puzzle[getY()][getX()] = temp+1;
+    grid[getY()][getX()].num = temp+1;
   } 
   
   int getX(){
@@ -85,7 +85,7 @@ class Cell {
   void display() {
     if(mouse) {
       fill(#74FFA3);
-      addOne();
+      //addOne();
     }else{
       fill(255);
     }
