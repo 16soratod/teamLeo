@@ -26,6 +26,78 @@ void setup() {
   }
 }
 
+int getX(){
+    if(mouseX < 90){
+      return 0;
+    }
+    if(mouseX < 180){
+      return 1;
+    }
+    if(mouseX < 270){
+      return 2;
+    }
+    if(mouseX < 360){
+      return 3;
+    }
+    if(mouseX < 450){
+      return 4;
+    }
+    if(mouseX < 540){
+      return 5;
+    }
+    if(mouseX < 630){
+      return 6;
+    }
+    if(mouseX < 720){
+      return 7;
+    }
+    if(mouseX < 810){
+      return 8;
+    }
+    return -1;
+  }
+  
+int getY(){
+    if(mouseY < 90){
+      return 0;
+    }
+    if(mouseY < 180){
+      return 1;
+    }
+    if(mouseY < 270){
+      return 2;
+    }
+    if(mouseY < 360){
+      return 3;
+    }
+    if(mouseY < 450){
+      return 4;
+    }
+    if(mouseY < 540){
+      return 5;
+    }
+    if(mouseY < 630){
+      return 6;
+    }
+    if(mouseY < 720){
+      return 7;
+    }
+    if(mouseY < 810){
+      return 8;
+    }
+    return -1;
+  }
+  
+void addOne(){
+    int temp = puzzle[getY()][getX()];
+    puzzle[getY()][getX()] = temp++;
+    grid[getY()][getX()].num = temp;
+} 
+  
+void mousePressed(){
+    addOne();
+  }
+
 void draw() {
   //background(255);
   if(state == 'm') {//Main Menu
@@ -33,13 +105,13 @@ void draw() {
   if(state == 'p') {//Play
   }
   if(state == 'e') {//Level Editor
-    for (int i=0; i<cols; i++) {
-      for (int j=0; j<rows; j++) {
+    for (int i=0; i<rows; i++) {
+      for (int j=0; j<cols; j++) {
         grid[i][j].rollover(mouseX,mouseY);
         grid[i][j].display();
         //grid[i][j].displayOver();
-        //grid[i][j].addOne();  
-        grid[i][j].update();
+        //mousePressed();
+        //grid[i][j].update();
       }
     }
   }

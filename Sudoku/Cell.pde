@@ -14,10 +14,10 @@ class Cell {
     mouse = false;
   }
   
-  void addOne(){
-    int temp = puzzle[getX()][getY()];
-    puzzle[getX()][getY()] = temp++;
-    grid[getX()][getY()].num = temp++;
+  /*void addOne(){
+    int temp = puzzle[getY()][getX()];
+    puzzle[getY()][getX()] = temp++;
+    grid[getY()][getX()].num = temp++;
   } 
   
   int getX(){
@@ -80,11 +80,12 @@ class Cell {
       return 8;
     }
     return -1;
-  }
+  }*/
   
   void display() {
     if(mouse) {
       fill(#74FFA3);
+      addOne();
     }else{
       fill(255);
     }
@@ -99,15 +100,12 @@ class Cell {
     line(0,540,810,540);
     line(0,810,810,810);
     line(810,0,810,810);
+    //println(getY() + ", " + getX());
   }
   
-  void update(){
-    mousePressed();
-  }
-  
-  void mousePressed(){
+  /*void mousePressed(){
       addOne();
-  }
+  }*/
   
   void rollover(int mx, int my) {
     if(mx>x && mx<x+w && my>y && my<y+h) {
