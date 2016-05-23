@@ -101,22 +101,13 @@ class Cell {
     line(810,0,810,810);
   }
   
-  void mousePressed(){
-    if(mouse){
-      addOne();
-    }
+  void update(){
+    mousePressed();
   }
   
-  String toString(){
-        String retSt = "";
-        for (int i = 0; i < 9; i++){
-          for (int j = 0; j < 9; j++){
-            retSt += puzzle[i][j];
-          }
-          retSt += "\n";
-        }
-        return retSt;
-        }
+  void mousePressed(){
+      addOne();
+  }
   
   void rollover(int mx, int my) {
     if(mx>x && mx<x+w && my>y && my<y+h) {

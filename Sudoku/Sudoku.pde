@@ -1,3 +1,4 @@
+import java.util.*;
 Cell[][] grid;
 int[][] puzzle;
 
@@ -38,9 +39,9 @@ void draw() {
         grid[i][j].display();
         //grid[i][j].displayOver();
         //grid[i][j].addOne();  
-        grid[i][j].mousePressed();
+        grid[i][j].update();
       }
     }
   }
-  System.out.println(puzzle.toString());
+  System.out.println(Arrays.toString(puzzle[0]));
 }
