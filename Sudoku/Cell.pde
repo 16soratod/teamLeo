@@ -22,9 +22,11 @@ class Cell {
     }
     strokeWeight(1);
     rect(x,y,w,h);
-    textSize(40);
-    fill(50);
-    text(num,x+35,y+60);
+    if (num > 0){
+      textSize(40); 
+      fill(50);
+      text(num,x+35,y+60);
+    }
     strokeWeight(4);
     line(270,0,270,810);
     line(540,0,540,810);
