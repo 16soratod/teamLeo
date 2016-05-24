@@ -24,6 +24,38 @@ void setup() {
       puzzle[i][j] = 0;
     }
   }
+  
+  //set up for demo
+  
+  grid[2][0].num = 6;
+  grid[5][0].num = 7;
+  grid[6][0].num = 3;
+  grid[1][1].num = 1;
+  grid[2][1].num = 8;
+  grid[5][1].num = 9;
+  grid[7][1].num = 5;
+  grid[0][2].num = 5;
+  grid[7][2].num = 6;
+  grid[8][2].num = 4;
+  grid[0][3].num = 9;
+  grid[1][3].num = 2; 
+  grid[4][3].num = 8;
+  grid[3][4].num = 7; 
+  grid[4][4].num = 6;
+  grid[5][4].num = 3;
+  grid[4][5].num = 9;
+  grid[7][5].num = 7;
+  grid[8][5].num = 5; 
+  grid[0][6].num = 6;
+  grid[1][6].num = 3;
+  grid[8][6].num = 8;
+  grid[1][7].num = 9;
+  grid[3][7].num = 3;
+  grid[6][7].num = 5;
+  grid[7][7].num = 2;
+  grid[2][8].num = 2;
+  grid[3][8].num = 4; 
+  grid[6][8].num = 6;
 }
 
 int getX(){
