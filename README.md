@@ -10,8 +10,23 @@ Project Name: Sudoku Solver
 Description: Solves Sudoku puzzles
 
 DevLog:
--wrote readMe.md 5/12/16
+5/12/16 Sorato & Elina: wrote readMe.md and initialized master branch
 -researched Sudoku Solver algorithms (backtrack and state space search) 
+5/13/16 Sorato & Elina: started the Sudoku.java code, implemented general functions and vars 
+5/16/16 Sorato & Elina: finished outline and some functions involved in solver() and solverH() 
+-Started constructors 
+5/17/16 Elina: fixed constructors and toString, added to Solver 
+-Sorato: updated Sudoku.java and started solver
+5/18/16 Sorato: updated solver code
+-Sorato & Elina: updated Sudoku.java. Still working on solver
+5/19/16 Elina: Fixed Solver
+5/22/16 Sorato: started processing display, made grid, made interactive fxn
+5/23/16 Sorato & Elina: Fixing the Sudoku.pde
+Elina: Fixed clicking to add number on grid problem, fixed grid display, solve and rest buttons, implemented solver
+Sorato: updated README.md, fixed minor bugs
+
+
+
 
 
 =============================================================================================================================
