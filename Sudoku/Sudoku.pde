@@ -63,9 +63,9 @@ void mousePressed(){
         grid[i][j].num = 0;
       }
     }
-  for (int i = 0; i < 9; i++)
+  /*for (int i = 0; i < 9; i++)
     println(Arrays.toString(puzzle[i]));
-  println();
+  println();*/
   }
 
 void draw() {
