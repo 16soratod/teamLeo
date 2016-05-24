@@ -48,8 +48,14 @@ void addOne(){
 void mousePressed(){
   if (mouseX < 810 && mouseY < 810)
     addOne();
-  else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293)
-    fill(200);
+  else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293){
+    SudokuSolver.solve(puzzle);
+    for (int i = 0; i < 9; i++){
+      for (int j = 0; j < 9; j++){
+        grid[i][j].num = puzzle[j][i];
+      }
+    }
+  }
   else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 517 && mouseY <= 563)
     for (int i = 0; i < 9; i++){
       for (int j = 0; j < 9; j++){
@@ -66,6 +72,8 @@ void draw() {
   //background(255);
   if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293)
     fill(200);
+  else
+    fill(255);
   rect(855,245,180,50,10);
   textSize(40);
   fill(50);
