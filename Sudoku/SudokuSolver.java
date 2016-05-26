@@ -4,7 +4,11 @@ import java.io.*;
 public class SudokuSolver{
 
     public static boolean solve(int[][] puzzle){
-    	return solveH(0,0,puzzle);
+        if(checkNum(puzzle)){
+            return solveH(0,0,puzzle);
+        }else{
+          return false;
+        }
     }
 
     public static boolean solveH(int row, int col, int[][] puzzle){
@@ -60,6 +64,19 @@ public class SudokuSolver{
 		return false;
     	}
 	return true;
+    }
+    
+    public static boolean checkNum(int[][] puzzle){
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+              if(puzzle[i][j] != 0){
+               if(! (checkBox(i,j,puzzle[i][j],puzzle) && checkHorizontal(i, puzzle[i][j], puzzle) && checkVertical(j,puzzle[i][j],puzzle)) ){
+                 return false;
+               }
+              }
+            }
+        }
+        return true;
     }
 
 }

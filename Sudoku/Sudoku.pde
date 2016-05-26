@@ -7,9 +7,12 @@ int rows = 9;
 
 char state = 'e';
 
+boolean isError;
+
 void setup() {
   size(1080, 810);
   background(255);
+  isError = false;
   //set up grid
   grid = new Cell[cols][rows];
   for(int i=0; i<cols; i++) {
