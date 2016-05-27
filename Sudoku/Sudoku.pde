@@ -7,12 +7,9 @@ int rows = 9;
 
 char state = 'e';
 
-boolean isError;
-
 void setup() {
   size(1080, 810);
   background(255);
-  isError = false;
   //set up grid
   grid = new Cell[cols][rows];
   for(int i=0; i<cols; i++) {
@@ -134,4 +131,16 @@ void draw() {
       }
     }
   }
+  /*
+  if(SudokuSolver.getError()){
+      text("Invalid", 405, 405);
+      for (int i = 0; i < 9; i++){
+        for (int j = 0; j < 9; j++){
+          puzzle[i][j] = 0;
+          grid[i][j].num = 0;
+        }
+       }
+       SudokuSolver.setError(false);
+    }
+    */
 }

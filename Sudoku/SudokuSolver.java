@@ -3,10 +3,12 @@ import java.io.*;
 
 public class SudokuSolver{
 
+    boolean isError = false;
     public static boolean solve(int[][] puzzle){
         if(checkNum(puzzle)){
             return solveH(0,0,puzzle);
         }else{
+          setError(true);
           return false;
         }
     }
@@ -77,6 +79,14 @@ public class SudokuSolver{
             }
         }
         return true;
+    }
+    
+    public boolean getError(){
+      return isError;
+    }
+    
+    public static void setError(boolean error){
+      isError = error;
     }
 
 }
