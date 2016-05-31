@@ -6,6 +6,7 @@ int cols = 9;
 int rows = 9;
 
 char state = 'e';
+boolean isError;
 
 void setup() {
   size(1080, 810);
@@ -27,7 +28,7 @@ void setup() {
   
   //set up for demo
   
-  grid[2][0].num = 6;
+  /*grid[2][0].num = 6;
   grid[5][0].num = 7;
   grid[6][0].num = 3;
   grid[1][1].num = 1;
@@ -55,7 +56,7 @@ void setup() {
   grid[7][7].num = 2;
   grid[2][8].num = 2;
   grid[3][8].num = 4; 
-  grid[6][8].num = 6;
+  grid[6][8].num = 6;*/
 }
 
 int getX(){
@@ -78,21 +79,31 @@ void addOne(){
 } 
   
 void mousePressed(){
-  if (mouseX < 810 && mouseY < 810)
+  if (mouseX < 810 && mouseY < 810 && !isError)
     addOne();
-  else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293){
-    SudokuSolver.solve(puzzle);
+  else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293 && !isError){
+    if (!SudokuSolver.solve(puzzle))
+      isError = true;
     for (int i = 0; i < 9; i++){
       for (int j = 0; j < 9; j++){
         grid[i][j].num = puzzle[j][i];
       }
     }
   }
-  else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 517 && mouseY <= 563)
+  else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 517 && mouseY <= 563 && !isError)
     for (int i = 0; i < 9; i++){
       for (int j = 0; j < 9; j++){
         puzzle[i][j] = 0;
         grid[i][j].num = 0;
+      }
+    }
+    else if (mouseX >= 352 && mouseX <= 458 & mouseY >= 402 && mouseY <= 448 && isError){
+      isError = false;
+      for (int i = 0; i < 9; i++){
+        for (int j = 0; j < 9; j++){
+          puzzle[i][j] = 0;
+          grid[i][j].num = 0;
+        }
       }
     }
   /*for (int i = 0; i < 9; i++)
@@ -122,7 +133,7 @@ void draw() {
   }
   if(state == 'p') {//Play
   }
-  if(state == 'e') {//Level Editor
+  if(state == 'e' && !isError) {//Level Editor
     for (int i=0; i<rows; i++) {
       for (int j=0; j<cols; j++) {
         grid[i][j].rollover(mouseX,mouseY);
@@ -131,16 +142,18 @@ void draw() {
       }
     }
   }
-  /*
-  if(SudokuSolver.getError()){
-      text("Invalid", 405, 405);
-      for (int i = 0; i < 9; i++){
-        for (int j = 0; j < 9; j++){
-          puzzle[i][j] = 0;
-          grid[i][j].num = 0;
-        }
-       }
-       SudokuSolver.setError(false);
-    }
-    */
+  if(isError){
+    fill(255);
+    rect(205,330,400,150);
+    textSize(25);
+    fill(0);
+    text("Invalid input. Please try again.",225,380);
+    if (mouseX >= 352 && mouseX <= 458 & mouseY >= 402 && mouseY <= 448)
+      fill(200);
+    else 
+      fill(255);
+    rect(350,400,110,50,10);
+    fill(0);
+    text("OK",387,435);
+  }
 }

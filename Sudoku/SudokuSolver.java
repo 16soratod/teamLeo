@@ -3,12 +3,10 @@ import java.io.*;
 
 public class SudokuSolver{
 
-    boolean isError = false;
     public static boolean solve(int[][] puzzle){
         if(checkNum(puzzle)){
             return solveH(0,0,puzzle);
         }else{
-          setError(true);
           return false;
         }
     }
@@ -72,7 +70,7 @@ public class SudokuSolver{
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
               if(puzzle[i][j] != 0){
-               if(! (checkBox(i,j,puzzle[i][j],puzzle) && checkHorizontal(i, puzzle[i][j], puzzle) && checkVertical(j,puzzle[i][j],puzzle)) ){
+               if(!checkNumH(i, j, puzzle)){
                  return false;
                }
               }
@@ -81,12 +79,24 @@ public class SudokuSolver{
         return true;
     }
     
-    public boolean getError(){
-      return isError;
-    }
-    
-    public static void setError(boolean error){
-      isError = error;
+    public static boolean checkNumH(int row, int col, int[][] puzzle){
+      int val = puzzle[row][col];
+      //check box
+      int r = row / 3 * 3;
+      int c = col / 3 * 3;
+      for (int i = row, j = col + 1; i < r + 3; i++, j = c)
+        for (; j < c + 3; j++)
+          if (puzzle[i][j] == val)
+            return false;
+      //check horizontal
+      for (int j = col + 1; j < 9; j++)
+        if (puzzle[row][j] == val)
+          return false;
+      //check vertical
+      for (int i = row + 1; i < 9; i++)
+        if (puzzle[i][col] == val)
+          return false;
+      return true;
     }
 
 }
