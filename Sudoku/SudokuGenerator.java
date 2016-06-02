@@ -36,6 +36,36 @@ public class SudokuGenerator{
 	}
     }
 
+    public void hBoxSwap(){
+	int box1 = (int)(Math.random()*3);
+	int box2 = (int)(Math.random()*2)+1;
+	box2 = (box1 + box2) % 3 * 3;
+	box1 *= 3;
+	System.out.println(box1 + ", " + box2);
+	for(int i = 0; i < 3; i++){
+	    for(int j = 0; j < 9; j++){
+		int temp = puzzle[box1+i][j];
+		puzzle[box1+i][j] = puzzle[box2+i][j];
+		puzzle[box2+i][j] = temp;
+	    }
+	}
+    }
+
+    public void vBoxSwap(){
+	int box1 = (int)(Math.random()*3);
+	int box2 = (int)(Math.random()*2)+1;
+	box2 = (box1 + box2) % 3 * 3;
+	box1 *= 3;
+	System.out.println(box1 + ", " + box2);
+	for(int i = 0; i < 3; i++){
+	    for(int j = 0; j < 9; j++){
+		int temp = puzzle[j][box1+i];
+		puzzle[j][box1+i] = puzzle[j][box2+i];
+		puzzle[j][box2+i] = temp;
+	    }
+	}
+    }
+
     public String toString(){
 	String retSt = "";
         for (int i = 0; i < 9; i++){
@@ -53,6 +83,10 @@ public class SudokuGenerator{
 	a.rowSwap();
 	System.out.println(a.toString());
 	a.colSwap();
+	System.out.println(a.toString());
+	a.hBoxSwap();
+	System.out.println(a.toString());
+	a.vBoxSwap();
 	System.out.println(a.toString());
     }
 }
