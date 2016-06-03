@@ -77,6 +77,15 @@ public class SudokuGenerator{
 	}
     }
 
+    public void deleteCell(){
+	int r = (int)(Math.random()*9);
+	int c = (int)(Math.random()*9);
+	int temp = puzzle[r][c];
+	puzzle[r][c] == 0;
+	if (numSolutions > 1)
+	    puzzle[r][c] = temp;
+    }
+
     public String toString(){
 	String retSt = "";
         for (int i = 0; i < 9; i++){
