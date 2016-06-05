@@ -21,6 +21,18 @@ public class SudokuGenerator{
 	    else
 		vBoxSwap();
 	}
+	System.out.println(toString());
+	int fails = 0;
+        int r = (int)(Math.random()*9);
+	int c = (int)(Math.random()*9);
+	puzzle[r][c] = 0;
+	for(int j = 0; j < 49; j++){
+	    if(!deleteCell(j)){
+		fails++;
+		if(fails >= 5)
+		    j--;
+	    }
+	}
     }
 
     public void rowSwap(){
@@ -77,13 +89,57 @@ public class SudokuGenerator{
 	}
     }
 
-    public void deleteCell(){
+    public boolean solveH(int row, int col){
+    	if(row == 9){
+	    	return true;
+    	}
+	int temp;
+    	if(puzzle[row][col] != 0){
+	    if(col <= 7 && solveH(row,col+1)){
+		return true;
+	    }else if (col > 7 && solveH(row+1,0)){
+		return true;
+	    }
+    	}else{
+	    for(int i = 1; i < 10; i++){
+		temp = i;
+		if(SudokuSolver.checkBox(row,col,temp,puzzle)
+		   && SudokuSolver.checkHorizontal(row,temp,puzzle) 
+		   && SudokuSolver.checkVertical(col,temp,puzzle)){
+		    puzzle[row][col] = temp;
+		    if(col <= 7 && solveH(row,col+1)){
+			puzzle[row][col] = 0;
+			return true;
+		    }else if (col > 7 && solveH(row+1,0)){
+			puzzle[row][col] = 0;
+			return true;
+		    }
+		}
+	    }
+	    puzzle[row][col] = 0;
+	}
+	return false;
+    }
+    
+    public boolean deleteCell(int j){
 	int r = (int)(Math.random()*9);
 	int c = (int)(Math.random()*9);
+	if (puzzle[r][c] == 0)
+	    return false;
 	int temp = puzzle[r][c];
-	puzzle[r][c] == 0;
-	if (numSolutions > 1)
-	    puzzle[r][c] = temp;
+	for(int i = 1; i < 10; i++){
+	    if(i != temp && SudokuSolver.checkBox(r,c,i,puzzle)
+	       && SudokuSolver.checkHorizontal(r,i,puzzle) 
+	       && SudokuSolver.checkVertical(c,i,puzzle)){
+		puzzle[r][c] = i;
+		if(solveH(0,0)){
+		    puzzle[r][c] = temp;
+		    return false;
+		}
+	    }
+	}
+	puzzle[r][c] = 0;
+	return true;
     }
 
     public String toString(){
@@ -100,6 +156,11 @@ public class SudokuGenerator{
     public static void main(String[] args){
 	SudokuGenerator a = new SudokuGenerator();
 	System.out.println(a.toString());
+	SudokuSolver.solve(a.puzzle);
+	System.out.println(a.toString());
+	//for (int i = 0; i < 20; i++)
+	//System.out.println(a.deleteCell());
+	//System.out.println(a.toString());
 	/*a.rowSwap();
 	System.out.println(a.toString());
 	a.colSwap();
