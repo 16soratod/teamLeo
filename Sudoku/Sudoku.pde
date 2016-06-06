@@ -97,7 +97,10 @@ void mousePressed(){
         grid[i][j].num = 0;
       }
     }
-    else if (mouseX >= 352 && mouseX <= 458 & mouseY >= 402 && mouseY <= 448 && isError){
+    else if (mouseX >= 257 && mouseX <= 372 & mouseY >= 402 && mouseY <= 448 && isError){
+      isError = false;
+    }
+    else if (mouseX >= 432 && mouseX <= 553 & mouseY >= 402 && mouseY <= 448 && isError){
       isError = false;
       for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
@@ -148,12 +151,19 @@ void draw() {
     textSize(25);
     fill(0);
     text("Invalid input. Please try again.",225,380);
-    if (mouseX >= 352 && mouseX <= 458 & mouseY >= 402 && mouseY <= 448)
+    if (mouseX >= 257 && mouseX <= 372 & mouseY >= 402 && mouseY <= 448)
       fill(200);
     else 
       fill(255);
-    rect(350,400,110,50,10);
+    rect(255,400,125,50,10);
     fill(0);
-    text("OK",387,435);
+    text("Continue",262,435);
+    if (mouseX >= 432 && mouseX <= 553 & mouseY >= 402 && mouseY <= 448)
+      fill(200);
+    else 
+      fill(255);
+    rect(430,400,125,50,10);
+    fill(0);
+    text("Restart",450,435);
   }
 }
