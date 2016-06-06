@@ -15,7 +15,6 @@ public class SudokuSolver{
     	if(row == 9){
 	    	return true;
     	}
-	int temp;
     	if(puzzle[row][col] != 0){
 	    if(col <= 7 && solveH(row,col+1,puzzle)){
 		return true;
@@ -24,10 +23,11 @@ public class SudokuSolver{
 	    }
     	}else{
 	    for(int i = 1; i < 10; i++){
-		temp = i;
-		if(checkBox(row,col,temp,puzzle) && checkHorizontal(row,temp,puzzle) 
-		   && checkVertical(col,temp,puzzle)){
-		    puzzle[row][col] = temp;
+		//check if i is a valid input
+		if(checkBox(row,col,i,puzzle)
+		   && checkHorizontal(row,i,puzzle) 
+		   && checkVertical(col,i,puzzle)){
+		    puzzle[row][col] = i;
 		    if(col <= 7 && solveH(row,col+1,puzzle)){
 			return true;
 		    }else if (col > 7 && solveH(row+1,0,puzzle)){
@@ -65,7 +65,8 @@ public class SudokuSolver{
     	}
 	return true;
     }
-    
+
+    //checks if board is valid
     public static boolean checkNum(int[][] puzzle){
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
