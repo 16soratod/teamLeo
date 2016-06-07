@@ -5,12 +5,14 @@ int[][] puzzle;
 int cols = 9;
 int rows = 9;
 
+int screen = 0;
+
 char state = 'e';
 boolean isError;
 
 void setup() {
   size(1080, 810);
-  background(255);
+  background(255); 
   //set up grid
   grid = new Cell[cols][rows];
   for(int i=0; i<cols; i++) {
@@ -79,6 +81,12 @@ void addOne(){
 } 
   
 void mousePressed(){
+  if(screen == 0){
+    if(mouseX < 390 && mouseX > 240 && mouseY > 480 && mouseY < 540 && !isError){
+      screen = 1;
+    }
+  }
+  if(screen == 1){
   if (mouseX < 810 && mouseY < 810 && !isError)
     addOne();
   else if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293 && !isError){
@@ -109,6 +117,16 @@ void mousePressed(){
         }
       }
     }
+    if(mouseX < 1080 && mouseX > 860 && mouseY < 110 && mouseY > 50){
+            for (int i = 0; i < 9; i++){
+          for (int j = 0; j < 9; j++){
+            puzzle[i][j] = 0;
+            grid[i][j].num = 0;
+        }
+      }
+        screen = 0;
+    }
+  }
   /*for (int i = 0; i < 9; i++)
     println(Arrays.toString(puzzle[i]));
   println();*/
@@ -116,26 +134,55 @@ void mousePressed(){
 
 void draw() {
   //background(255);
-  if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293)
-    fill(200);
-  else
+  if(screen == 0){
+    background(255);
+    fill(0);
+    textSize(40);
+    text("Sudoku Solver & Generator", 280, 330);
     fill(255);
-  rect(855,245,180,50,10);
-  textSize(40);
-  fill(50);
-  text("Solve",895,285);
-  if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 517 && mouseY <= 563)
-    fill(200);
-  else
+    rect(240, 480, 150, 60, 10);
+    textSize(40);
+    fill(0);
+    text("Solver", 256, 520);
     fill(255);
-  rect(855,515,180,50,10);
-  textSize(40);
-  fill(50);
-  text("Reset",895,555);
-  if(state == 'm') {//Main Menu
+    rect(740, 480, 210, 60, 10);
+    textSize(40);
+    fill(0); 
+    text("Generator", 750, 520);
+    fill(255);
+    rect(460, 600, 240, 60, 10);
+    textSize(40);
+    fill(0);
+    text("Recognizer", 470, 650);
+    
+  }
+  if(screen == 1){
+    background(255);
+    if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 247 && mouseY <= 293)
+      fill(200);
+    else
+      fill(255);
+    rect(855,245,180,50,10);
+    textSize(40);
+    fill(50);
+    text("Solve",895,285);
+    if (mouseX >= 857 && mouseX <= 1033 & mouseY >= 517 && mouseY <= 563)
+      fill(200);
+    else
+      fill(255);
+    rect(855,515,180,50,10);
+    textSize(40);
+    fill(50);
+    text("Reset",895,555);
+    fill(255);
+    rect(850, 50, 140, 60, 10);
+    fill(0);
+    textSize(40);
+    text("Menu", 860, 90);
+  /*if(state == 'm') {//Main Menu
   }
   if(state == 'p') {//Play
-  }
+  }*/
   if(state == 'e' && !isError) {//Level Editor
     for (int i=0; i<rows; i++) {
       for (int j=0; j<cols; j++) {
@@ -165,5 +212,14 @@ void draw() {
     rect(430,400,125,50,10);
     fill(0);
     text("Restart",450,435);
+  }
+  /*case 3:
+    SudokuGenerator.draw();
+    generator = true;
+    */
+  }
+  if(screen == 2){
+    background(255);
+    
   }
 }
