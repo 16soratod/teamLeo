@@ -3,6 +3,7 @@ class Cell {
   float w,h; //Size
   float r,g,b; //Color
   int num; //Number
+  boolean generated;
   boolean mouse;
  
   Cell(float tempX, float tempY, float tempW, float tempH, int tempNum) {
@@ -11,6 +12,7 @@ class Cell {
     w = tempW;
     h = tempH;
     num = tempNum;
+    generated = true;
     mouse = false;
   }
   
@@ -24,7 +26,10 @@ class Cell {
     rect(x,y,w,h);
     if (num > 0){
       textSize(40); 
-      fill(50);
+      if (generated)
+        fill(0);
+      else
+        fill(150);
       text(num,x+35,y+60);
     }
     strokeWeight(4);
