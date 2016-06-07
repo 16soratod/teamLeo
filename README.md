@@ -25,14 +25,23 @@ DevLog:
 Elina: Fixed clicking to add number on grid problem, fixed grid display, solve and reset buttons, implemented solver
 Sorato: updated README.md, fixed minor bugs
 5/27/16 Elina: Fixed the check if the grid was valid, so that two of the same numbers could not be placed together. Created error message
+5/28/16 Sorato: Researched OCR APIs
 5/29/16 Elina: Reasearched algorithms to generate a sudoku puzzle
+	Sorato: Found a few APIs to work with
 5/31/16 Elina: Began implementing a generator
+	Sorato: Wrote text parser
 6/1/16 Elina: Added the rest of the swaps into the generator to create different puzzles
+	Sorato: Tried to implement API in processing. Did not work because library could not be found (com.abbyy.ocrdsk.*)
 6/2/16 Elina: Implemented swaps into the puzzle
+	Sorato: Made GUI interface Sudoku app to see if command could be ran through processing to GUI to terminal. Did not work because processing could not find library, and could not upload pictures into certain directory and run terminal command. 
 6/3/16 Elina: Started the algorithm to delete cells from the grids, so puzzles can be generated
+6/4/16 Sorato: Aborted API completely. Swtiched to work on generator.
 6/5/16 Elina: Finished the deleteCell() method, which allowed for a puzzle to be generated. Made the generator static so that it could be used in processing. Implemented difficulty in deleteCell()
+	Sorato: fixed minor bugs.
 6/6/16 Elina: Fixed error message to now give two options, either continue with or restart the input on the board. Worked on generator screen, which allows the person to interact and solve the puzzle themselve. Also fixed solver screen.
+	Sorato: Made title page and switch screens
 6/7/16 Elina: Fixed button interaction on title page. Updated readMe.md
+	Sorato: Fixed minor bugs. Updated readMe.md
 
 
 

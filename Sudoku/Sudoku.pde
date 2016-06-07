@@ -231,6 +231,7 @@ void draw() {
     textSize(40);
     fill(0); 
     text("Generator", 750, 525);
+    /*
     if (mouseX >= 462 && mouseX <= 698 & mouseY >= 602 && mouseY <= 658)
       fill(200);
     else
@@ -239,6 +240,7 @@ void draw() {
     textSize(40);
     fill(0);
     text("Recognizer", 472, 645);
+    */
     
   }
   if(screen == 1){
