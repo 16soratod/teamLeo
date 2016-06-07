@@ -206,33 +206,39 @@ void mousePressed(){
       }
     }
   }
-  /*for (int i = 0; i < 9; i++)
-    println(Arrays.toString(puzzle[i]));
-  println();*/
   }
 
 void draw() {
-  //background(255);
   if(screen == 0){
     background(255);
+    strokeWeight(4);
     fill(0);
     textSize(40);
     text("Sudoku Solver & Generator", 280, 330);
-    fill(255);
+    if (mouseX >= 242 && mouseX <= 388 & mouseY >= 482 && mouseY <= 538)
+      fill(200);
+    else
+      fill(255);
     rect(240, 480, 150, 60, 10);
     textSize(40);
     fill(0);
-    text("Solver", 256, 520);
-    fill(255);
+    text("Solver", 256, 525);
+    if (mouseX >= 742 && mouseX <= 948 & mouseY >= 482 && mouseY <= 538)
+      fill(200);
+    else
+      fill(255);
     rect(740, 480, 210, 60, 10);
     textSize(40);
     fill(0); 
-    text("Generator", 750, 520);
-    fill(255);
+    text("Generator", 750, 525);
+    if (mouseX >= 462 && mouseX <= 698 & mouseY >= 602 && mouseY <= 658)
+      fill(200);
+    else
+      fill(255);
     rect(460, 600, 240, 60, 10);
     textSize(40);
     fill(0);
-    text("Recognizer", 470, 650);
+    text("Recognizer", 472, 645);
     
   }
   if(screen == 1){

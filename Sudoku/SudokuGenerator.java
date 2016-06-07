@@ -26,7 +26,7 @@ public class SudokuGenerator{
 	int c = (int)(Math.random()*9);
 	//remove first element
 	puzzle[r][c] = 0;
-	for(int j = 0; j < 49 + (5 * difficulty); j++){
+	for(int j = 0; j < 49 + (3 * difficulty); j++){
 	    if(!deleteCell(puzzle)){
 		fails++;
 		if(fails >= 5)
