@@ -22,9 +22,17 @@ DevLog:
 5/19/16 Elina: Fixed Solver
 5/22/16 Sorato: started processing display, made grid, made interactive fxn
 5/23/16 Sorato & Elina: Fixing the Sudoku.pde
-Elina: Fixed clicking to add number on grid problem, fixed grid display, solve and rest buttons, implemented solver
+Elina: Fixed clicking to add number on grid problem, fixed grid display, solve and reset buttons, implemented solver
 Sorato: updated README.md, fixed minor bugs
-
+5/27/16 Elina: Fixed the check if the grid was valid, so that two of the same numbers could not be placed together. Created error message
+5/29/16 Elina: Reasearched algorithms to generate a sudoku puzzle
+5/31/16 Elina: Began implementing a generator
+6/1/16 Elina: Added the rest of the swaps into the generator to create different puzzles
+6/2/16 Elina: Implemented swaps into the puzzle
+6/3/16 Elina: Started the algorithm to delete cells from the grids, so puzzles can be generated
+6/5/16 Elina: Finished the deleteCell() method, which allowed for a puzzle to be generated. Made the generator static so that it could be used in processing. Implemented difficulty in deleteCell()
+6/6/16 Elina: Fixed error message to now give two options, either continue with or restart the input on the board. Worked on generator screen, which allows the person to interact and solve the puzzle themselve. Also fixed solver screen.
+6/7/16 Elina: Fixed button interaction on title page. Updated readMe.md
 
 
 
