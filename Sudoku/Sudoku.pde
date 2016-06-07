@@ -378,7 +378,7 @@ void draw() {
       rect(205,330,400,150);
       textSize(25);
       fill(0);
-      text("Congratulations, you solved the puzzle!",302,380);
+      text("Congrats, you solved the puzzle!",225,380);
       if (mouseX >= 352 && mouseX <= 458 & mouseY >= 402 && mouseY <= 448)
          fill(200);
        else 
